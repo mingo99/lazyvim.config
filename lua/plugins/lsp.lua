@@ -24,6 +24,7 @@ return {
         "vimdoc",
         "xml",
         "yaml",
+        "query",
       })
     end,
   },
@@ -31,6 +32,7 @@ return {
   {
     "neovim/nvim-lspconfig",
     opts = {
+      inlay_hints = { enabled = false },
       diagnostics = {
         globals = { "vim", "LazyVim" },
       },
