@@ -49,6 +49,10 @@ return {
         "flake8",
         "verible",
       },
+      ui = {
+        border = "rounded",
+        title = "mason.nvim",
+      },
     },
   },
 }
