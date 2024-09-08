@@ -26,11 +26,16 @@ return {
 
     opts = {
       -- if you want to open yazi instead of netrw, see below for more info
-      open_for_directories = false,
+      -- open_for_directories = true,
 
       -- enable these if you are using the latest version of yazi
-      -- use_ya_for_events_reading = true,
-      -- use_yazi_client_id_flag = true,
+      use_ya_for_events_reading = true,
+      use_yazi_client_id_flag = true,
+
+      -- the type of border to use for the floating window. Can be many values,
+      -- including 'none', 'rounded', 'single', 'double', 'shadow', etc. For
+      -- more information, see :h nvim_open_win
+      yazi_floating_window_border = "rounded",
 
       keymaps = {
         show_help = "<f1>",
