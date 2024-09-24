@@ -1,7 +1,40 @@
 return {
   "nvim-telescope/telescope.nvim",
-  opts = {
-    pickers = {
+  -- dependencies = {
+  --   {
+  --     "nvim-telescope/telescope-live-grep-args.nvim",
+  --     -- This will not install any breaking changes.
+  --     -- For major updates, this must be adjusted manually.
+  --     version = "^1.0.0",
+  --   },
+  -- },
+  opts = function(_, opts)
+    local action_layout = require("telescope.actions.layout")
+    local actions = require("telescope.actions")
+    opts.defaults = vim.tbl_deep_extend("force", opts.defaults or {}, {
+      vimgrep_arguments = {
+        "rg",
+        "--color=never",
+        "--no-heading",
+        "--with-filename",
+        "--line-number",
+        "--column",
+        "--smart-case",
+        "--trim", -- add this value
+      },
+      mappings = {
+        n = {
+          ["<M-p>"] = action_layout.toggle_preview,
+        },
+        i = {
+          ["<C-u>"] = false,
+          ["<M-p>"] = action_layout.toggle_preview,
+          ["<esc>"] = actions.close,
+        },
+      },
+    })
+
+    opts.pickers = vim.tbl_deep_extend("force", opts.pickers or {}, {
       current_buffer_fuzzy_find = {
         theme = "dropdown",
         previewer = false,
@@ -22,6 +55,13 @@ return {
         end,
         additional_args = { "--ignore-case", "--pcre2" },
       },
-    },
-  },
+      buffers = {
+        mappings = {
+          i = {
+            ["<c-d>"] = actions.delete_buffer + actions.move_to_top,
+          },
+        },
+      },
+    })
+  end,
 }
