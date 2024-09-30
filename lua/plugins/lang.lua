@@ -16,4 +16,8 @@ return {
       },
     },
   },
+  --csv
+  {
+    "chrisbra/csv.vim"
+  }
 }
