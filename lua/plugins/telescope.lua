@@ -1,17 +1,19 @@
+local action_layout = require("telescope.actions.layout")
+local actions = require("telescope.actions")
+
 return {
   "nvim-telescope/telescope.nvim",
-  -- dependencies = {
-  --   {
-  --     "nvim-telescope/telescope-live-grep-args.nvim",
-  --     -- This will not install any breaking changes.
-  --     -- For major updates, this must be adjusted manually.
-  --     version = "^1.0.0",
-  --   },
-  -- },
-  opts = function(_, opts)
-    local action_layout = require("telescope.actions.layout")
-    local actions = require("telescope.actions")
-    opts.defaults = vim.tbl_deep_extend("force", opts.defaults or {}, {
+  dependencies = {
+    -- {
+    --   "nvim-telescope/telescope-live-grep-args.nvim",
+    --   -- This will not install any breaking changes.
+    --   -- For major updates, this must be adjusted manually.
+    --   version = "^1.0.0",
+    -- },
+    { "tsakirist/telescope-lazy.nvim" },
+  },
+  opts = {
+    defaults = {
       vimgrep_arguments = {
         "rg",
         "--color=never",
@@ -32,9 +34,8 @@ return {
           ["<esc>"] = actions.close,
         },
       },
-    })
-
-    opts.pickers = vim.tbl_deep_extend("force", opts.pickers or {}, {
+    },
+    pickers = {
       current_buffer_fuzzy_find = {
         theme = "dropdown",
         previewer = false,
@@ -62,6 +63,9 @@ return {
           },
         },
       },
-    })
-  end,
+      lsp_references = {
+        trim_text = true,
+      },
+    },
+  },
 }
