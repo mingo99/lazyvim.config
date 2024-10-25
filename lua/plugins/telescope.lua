@@ -10,6 +10,7 @@ return {
   keys = {
     { "<leader>sp", "<cmd>Telescope lazy<cr>", desc = "plugins list" },
     { "<leader>/", "<cmd>Telescope live_grep_args<CR>", desc = "Grep with args" },
+    { "<leader>ga", "<cmd>Telescope git_stash<CR>", desc = "Git Stash" },
   },
   opts = {
     defaults = {
