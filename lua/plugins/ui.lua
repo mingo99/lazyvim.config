@@ -16,13 +16,13 @@ return {
     },
   },
   {
-    "neovim/nvim-lspconfig",
+    "saghen/blink.cmp",
     opts = {
-      diagnostics = {
-        float = {
-          border = "rounded",
-        },
+      completion = {
+        menu = { border = "rounded", winblend = 0 },
+        documentation = { window = { border = "rounded" } },
       },
+      signature = { window = { border = "rounded" } },
     },
   },
 }
